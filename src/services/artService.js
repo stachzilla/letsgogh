@@ -1,8 +1,8 @@
 import { get } from "./serviceConfig";
 
 export const artService = {
-  getExhibitions(searchValue) {
-    return get(`https://api.artic.edu/api/v1/artworks/search?q=${searchValue}`);
+  getExhibitions(searchTerm) {
+    return get(`https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}`);
   },
 
   getExhibition(exhibitionId) {

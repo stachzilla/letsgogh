@@ -1,0 +1,191 @@
+@charset "utf-8";
+
+@import "styles/variables.scss";
+
+// COLORS
+$primary: #00d1b2;
+$info: #209cee;
+$success: #23d160;
+$warning: #ffdd57;
+$danger: #ff3860;
+$light: #f5f5f5;
+$dark: #363636;
+
+// TEXT
+$text: #4a4a4a;
+$link: #3273dc;
+$body-family: "Inter", sans-serif;
+$title-family: "Inter", sans-serif;
+$button-family: "Inter", sans-serif;
+
+// BREAKPOINTS
+$gap: 32px;
+$tablet: 769px;
+$desktop: 960px + (2 * $gap);
+$widescreen: 1152px + (2 * $gap);
+$fullhd: 1344px + (2 * $gap);
+$widescreen-enabled: true;
+$fullhd-enabled: false;
+
+// LAYOUT
+$section-padding: 3rem 1.5rem;
+$section-padding-medium: 6rem 1.5rem;
+$section-padding-large: 9rem 1.5rem;
+
+//NAVBAR
+.navbar-link {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: $font-size-medium;
+  margin: $medium 0;
+  border-radius: $medium;
+}
+.navbar-item {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: $font-size-medium;
+  border-radius: $medium;
+}
+$navbar-dropdown-arrow: $darkgray;
+$navbar-item-color: $logoblue;
+$navbar-item-hover-color: $logoblue;
+$navbar-item-hover-background-color: rgba(255, 255, 255, 0.6);
+$navbar-dropdown-item-hover-background-color: $light;
+
+// MODAL
+$modal-content-width: 960px;
+
+// SPACING HELPERS (.mt-3, .mx-auto, .p-5, etc)
+$spacing-shortcuts: (
+  "margin": "m",
+  "padding": "p",
+);
+$spacing-directions: (
+  "top": "t",
+  "right": "r",
+  "bottom": "b",
+  "left": "l",
+);
+$spacing-horizontal: "x";
+$spacing-vertical: "y";
+$spacing-values: (
+  "0": 0,
+  "1": 4px,
+  "2": 8px,
+  "3": 16px,
+  "4": 32px,
+  "5": 64px,
+  "auto": auto,
+);
+
+// SEE DOCS FOR MORE:
+// https://bit.ly/30UvE5O
+
+// IMPORT BULMA
+@import "~bulma/bulma.sass";
+
+// IMPORT FONT AWESOME
+@import url("https://use.fontawesome.com/releases/v5.10.1/css/all.css");
+
+body {
+  // Fix Bulma bug where columns cause
+  // horizontal scroll on mobile.
+  // https://github.com/jgthms/bulma/issues/449
+  //overflow-x: hidden;
+}
+
+#root {
+  // Full height of screen and flex so that we can push footer
+  // to the bottom even if content is shorter than screen
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // Push footer to the bottom of the screen
+  > .footer {
+    margin-top: auto;
+  }
+  // Prevent child elements from shrinking when content
+  // is taller than the screen (quirk of having flex parent)
+  > * {
+    flex-shrink: 0;
+  }
+}
+
+:root {
+  --rt-color-white: #fff;
+  --rt-color-dark: #222;
+  --rt-color-success: #8dc572;
+  --rt-color-error: #be6464;
+  --rt-color-warning: #f0ad4e;
+  --rt-color-info: $blueish;
+  --rt-opacity: 1;
+}
+
+h1 {
+  font-size: 100px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.shiny {
+  background: linear-gradient(90deg, #007cf0, #00dfd8);
+  background-size: 200% auto;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// ::-moz-selection {
+//   color: $logoblue;
+//   background: $primary;
+//   text-fill-color: $logoblue;
+//   -webkit-background-clip: initial;
+//   -webkit-text-fill-color: initial;
+// }
+
+// ::selection {
+//   color: $logoblue;
+//   background: $primary;
+//   text-fill-color: $logoblue;
+//   -webkit-background-clip: initial;
+//   -webkit-text-fill-color: initial;
+// }
+
+//Authenticator
+[data-amplify-authenticator] {
+  --amplify-colors-background-primary: $white;
+  --amplify-components-tabs-border-color: #007cf0;
+  //--amplify-colors-background-secondary: var(--amplify-colors-neutral-100);
+  --amplify-components-tabs-item-active-color: #007cf0;
+  --amplify-components-tabs-item-active-border-color: #007cf0;
+  --amplify-components-button-link-color: #007cf0;
+  --amplify-components-button-link-hover-color: #0063bf;
+  --amplify-components-button-link-hover-background-color: rgba(
+    0,
+    124,
+    240,
+    0.1
+  );
+  --amplify-components-button-primary-background-color: #007cf0;
+  --amplify-components-button-primary-hover-background-color: #0063bf;
+}
+
+[data-amplify-authenticator][data-variation="modal"] {
+  background: $white;
+}
+
+.amplify-tabs-item[data-state="active"] {
+  color: $blueish;
+  border-color: $blueish;
+}
+
+@media screen and (min-width: 1216px) {
+  .container:not(.is-max-desktop) {
+    width: 1152px;
+  }
+}

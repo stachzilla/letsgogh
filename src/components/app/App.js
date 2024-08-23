@@ -85,18 +85,6 @@ const App = () => {
           }
         />
         <Route
-          path="/saved"
-          element={
-            <SavedExhibitions
-              savedExhibitions={savedExhibitions}
-              updateArtFeature={updateArtFeature}
-              toggleSaveExhibition={toggleSaveExhibition}
-              savedExhibitionIds={savedExhibitionIds}
-              setSearchValue={setSearchValue}
-            />
-          }
-        />
-        <Route
           path="*"
           element={<NotFound setSearchValue={setSearchValue} />}
         />
