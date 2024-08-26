@@ -1,5 +1,4 @@
 import React from "react";
-import Meta from "./../components/Meta";
 
 function NotFoundPage(props) {
   return (

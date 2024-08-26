@@ -1,51 +1,46 @@
-import { Link } from "react-router-dom";
+import { Link } from "util/router";
 import { Card } from "../shared/card/Card";
 import PropTypes from "prop-types";
 import "./SavedExhibitions.css";
+import { useSavedItemsContext } from "contexts/savedItemsContext";
 
-export const SavedExhibitions = ({
-  savedExhibitions,
-  updateArtFeature,
-  toggleSaveExhibition,
-  savedExhibitionIds,
-  setSearchValue,
-}) => {
-  const savedExhibitionCards = savedExhibitions.map((exhibition) => {
-    return (
-      <Card
-        id={exhibition.id}
-        key={exhibition.id}
-        image_id={exhibition.image_id}
-        title={exhibition.title}
-        artist_title={exhibition.artist_title}
-        alt_text={exhibition.alt_text}
-        updateArtFeature={updateArtFeature}
-        toggleSaveExhibition={toggleSaveExhibition}
-        savedExhibitionIds={savedExhibitionIds}
-      />
-    );
-  });
+//I preferred named component functions over arrow functions
+//That changes imports from `import {componentName} from '...'` to `import componentName from '...'`
+export default function SavedExhibitions({}) {
+  const { savedItems } = useSavedItemsContext();
+
+  // No need to map these to a different variable.
+  // const savedExhibitionCards = savedItems?.map((exhibition) => {
+  //   return <Card exhibition={exhibition} />;
+  // });
+
+  //This is just to show how to handle a conditional in-line of rendering
+  //I prefer to have a render function insted of doing if/else in-line
+  function renderSavedItems() {
+    //This is to showcase a not-not shorthand for length check
+    //It converts length to a boolean, and then checks if it's true
+    //So if length = 0 or undefined or null (also known as falsy), it will return false, and show the Nothing saved yet
+    //If length > 0, it will return true, and map our cards
+    if (!!savedItems?.length) {
+      return savedItems?.map((exhibition) => (
+        <Card exhibition={exhibition} key={exhibition?.id} />
+      ));
+    }
+
+    //We don't need to check any conditions here because it's the default display.  If there are saved items we will never get here.
+    return <p>Nothing saved yet</p>;
+  }
 
   return (
     <>
       <h1>Your Curated Bucket List</h1>
-      <Link to={`/`} className="home-button" onClick={() => setSearchValue("")}>
+      {/* <Link to={`/`} className="home-button" onClick={() => setSearchValue("")}> */}
+      <Link to={`/`} className="home-button">
         <strong>Back to Home</strong>
       </Link>
-      <div className="saved-exhibitions-container">
-        {savedExhibitionCards.length === 0 ? (
-          <p>Nothing saved yet!</p>
-        ) : (
-          savedExhibitionCards
-        )}
-      </div>
+      <div className="saved-exhibitions-container">{renderSavedItems()}</div>
     </>
   );
-};
+}
 
-SavedExhibitions.propTypes = {
-  savedExhibitions: PropTypes.array.isRequired,
-  updateArtFeature: PropTypes.func.isRequired,
-  toggleSaveExhibition: PropTypes.func.isRequired,
-  savedExhibitionIds: PropTypes.array.isRequired,
-};
+SavedExhibitions.propTypes = {};

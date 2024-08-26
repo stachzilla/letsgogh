@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "util/router";
 import { Header } from "../header/Header";
 import "./NotFound.css";
 

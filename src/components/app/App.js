@@ -13,7 +13,10 @@ import { SavedExhibitions } from "components/savedExhibitions/SavedExhibitions";
 import { NotFound } from "components/shared/notFound/NotFound";
 import { Routes, Route, Link } from "react-router-dom";
 
-const App = () => {
+/**
+DEPRECATED.  Use "./pages/app"
+*/
+const LegacyApp = () => {
   const [exhibitions, setExhibitions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [artFeature, setArtFeature] = useState("");
@@ -85,6 +88,18 @@ const App = () => {
           }
         />
         <Route
+          path="/saved"
+          element={
+            <SavedExhibitions
+              savedExhibitions={savedExhibitions}
+              updateArtFeature={updateArtFeature}
+              toggleSaveExhibition={toggleSaveExhibition}
+              savedExhibitionIds={savedExhibitionIds}
+              setSearchValue={setSearchValue}
+            />
+          }
+        />
+        <Route
           path="*"
           element={<NotFound setSearchValue={setSearchValue} />}
         />
@@ -93,4 +108,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default LegacyApp;

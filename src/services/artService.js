@@ -2,11 +2,15 @@ import { get } from "./serviceConfig";
 
 export const artService = {
   getExhibitions(searchTerm) {
-    return get(`https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}`);
+    return get(
+      `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=id,title,image_id,artist_title,alt_text,short_description`
+    );
   },
 
   getExhibition(exhibitionId) {
-    return get(`https://api.artic.edu/api/v1/artworks/${exhibitionId}`);
+    return get(
+      `https://api.artic.edu/api/v1/artworks/${exhibitionId}?fields=id,title,image_id,artist_title,description,short_description,place_of_origin,date_display,style_title`
+    );
   },
 };
 
