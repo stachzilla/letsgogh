@@ -32,14 +32,14 @@ export default function SavedExhibitions({}) {
   }
 
   return (
-    <>
-      <h1>Your Curated Bucket List</h1>
+    <div className="container">
+      <h2>Your Curated Bucket List</h2>
       {/* <Link to={`/`} className="home-button" onClick={() => setSearchValue("")}> */}
       <Link to={`/`} className="home-button">
         <strong>Back to Home</strong>
       </Link>
       <div className="saved-exhibitions-container">{renderSavedItems()}</div>
-    </>
+    </div>
   );
 }
 

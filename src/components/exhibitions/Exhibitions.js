@@ -20,8 +20,6 @@ export default function Exhibitions({}) {
     }
   };
 
-  console.log(exhibitions?.data?.data);
-
   const exhibitionCards = exhibitions?.data?.data?.map((exhibition) => {
     // Simplify this by passing the exhibition into the component and do your property access within the component
     // Do not prop drill functions through multiple levels, this can cause memory leaks and/or re-rendering issues

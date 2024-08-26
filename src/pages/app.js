@@ -8,6 +8,7 @@ import ExhibitionPage from "./exhibition";
 import ExhibitionsPage from "./exhibitions";
 import { Header } from "components/shared/header/Header";
 import { SavedItemsProvider } from "contexts/savedItemsContext";
+import Navbar from "components/shared/nav/Navbar";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       {/* This is where we store our saved items */}
       <SavedItemsProvider>
         <Router>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={ExhibitionsPage} />
             <Route

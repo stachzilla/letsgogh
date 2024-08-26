@@ -2,6 +2,7 @@ import "./ArtFeature.css";
 import { Link } from "util/router";
 import PropTypes from "prop-types";
 
+//USE EXHIBITION.JS
 export const ArtFeature = ({
   artFeature,
   savedExhibitionIds,

@@ -6,7 +6,9 @@ import { useSavedItemsContext } from "contexts/savedItemsContext";
 export const Card = ({ exhibition }) => {
   const { savedItems, saveItem, removeItem } = useSavedItemsContext();
 
-  const isSaved = savedItems[exhibition?.id];
+  const isSaved = savedItems.some(
+    (savedItem) => savedItem.id === exhibition?.id
+  );
 
   const handleSave = () => {
     saveItem(exhibition);
@@ -40,7 +42,8 @@ export const Card = ({ exhibition }) => {
           <em>{exhibition?.artist_title}</em>
         </p>
         <div className="button-container">
-          F
+          <Link to={`/exhibitions/${exhibition?.id}`}>SEE MORE</Link>
+
           {/* <button
             className={`save-button ${
               savedExhibitionIds.includes(exhibition?.id)
